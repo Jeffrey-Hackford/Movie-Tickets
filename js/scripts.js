@@ -17,24 +17,42 @@ $(function() {
     var inputtedMovie = $("#movie-input :selected").val();
     var inputtedTime = $("#time-input :selected").val();
     var inputtedAge = $('input[name="age-input"]:checked').val();
+    var price = [];
+    console.log(inputtedName, inputtedMovie, inputtedTime, inputtedAge);
 
-    var ticketPrice = 10;
-    if (inputtedTime === 3) {
-      ticketPrice -= 1;
-    } else if (inputtedTime === 4) {
-      ticketPrice = 0;
+    var newTicket = new Ticket (inputtedName, inputtedMovie, inputtedTime, inputtedAge);
+
+    Ticket.prototype.ticketPrice = function() {
+      price = 10;
+      if (inputtedTime === 'Much Later') {
+        price -= 1;
+      } else if (inputtedTime === 'Yesterday') {
+        price = 0;
+      }
+
+      if ((inputtedAge === 1 || 3) && (inputtedTime !== 'Yesterday')) {
+        price -= 1;
+      }
+      return price;
     }
 
-    if (inputtedAge === 1 || 3) {
-      ticketPrice -= 1;
-    }
+    // attempted prototype for outputting details
+    //  Ticket.prototype.getDetails = function() {
+    //   newTicket.getDetails.forEach(function(detail) {
+    //     $("p#details").append("<li>" + detail.newTicket() + "</li><br>");
+    //   });
+    //   $("p#details").append("<li>" + newTicket.ticketPrice + "</li><br>")
+    //  }
 
-    $("ul#movie-goers").append("<li><span class='click'>" + inputtedName + "</span></li>")
+    $("ul#movie-goers").append("<li><span class='click'>" + inputtedName + "</span></li>");
 
-    $("click").click(function() {
-      var newTicket = new Ticket (inputtedName, inputtedMovie, inputtedTime, inputtedAge);
-      $("ul#details").text("<span class='userDetails'><h3>" + inputtedName + "</h3><br>" + inputtedMovie + "<br>" + inputtedTime + "<br>" + inputtedAge + "</span>")
+    $(".click").last().click(function() {
+      // newTicket.getDetails()
+      $("ul#details li").last().remove();
+      $("ul#details").append("<li><h3>" + inputtedName + "</h3>" + "<br>" + inputtedMovie + "<br>" + inputtedTime + "<br>" + newTicket.ticketPrice()) + "</li>";
 
+
+    console.log(newTicket);
     });
   });
 });
