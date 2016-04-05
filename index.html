@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/scripts.js"></script>
+    <title>Movie Tickets</title>
+  </head>
+  <body>
+    <div class="row">
+
+      <div class="container">
+        <div class="col-md-6">
+          <form id="new-movie">
+            <div class="form-group">
+              <label for="person-name">What is your name</label>
+              <input type="text" class="form-control" id="name-input">
+            </div>
+            <div class="form-group">
+              <label for="movie-name">Select your movie</label>
+              <select type="select" class="form-control" id="movie-input">
+                <option value="1">Ghost Busters 4</option>
+                <option value="2">Dark Knight Rises: Again</option>
+                <option value="3">The Matrix</option>
+                <option value="4">Karate Toddler</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="movie-time">Select your movie time</label>
+              <select type="select" class="form-control" id="time-input">
+                <option value="1">Now</option>
+                <option value="2">Later</option>
+                <option value="3">Much Later</option>
+                <option value="4">Yesterday</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="movie-age">Select your age</label>
+              <div class="radio">
+                <label><input type="radio" name="age-input" value="1">1-17</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="age-input" value="2">18-64</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="age-input" value="3">65+</label>
+              </div>
+            </div>
+
+            <input type="submit" value="Submit">
+          </form>
+          <div>
+            <h2>Who is seeing movies:</h2>
+            <ul id="movie-goers">
+
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <h2>Movie-Goer Details</h2>
+          <div class = "details">
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
